@@ -4,7 +4,7 @@ namespace App\Library\Parser\Model\Step;
 
 class StepFactory
 {
-    public static function build($header, $parameters, $notes, $order, $swimming = false): WarmupStep|CooldownStep|IntervalStep|RecoverStep|RestStep|RepeaterStep|null
+    public static function build($header, $parameters, $notes, $order, $swimming = false, ?int $criticalPower = null): WarmupStep|CooldownStep|IntervalStep|RecoverStep|RestStep|RepeaterStep|null
     {
         switch ($header) {
             case 'warmup':
@@ -13,6 +13,7 @@ class StepFactory
                 return new CooldownStep($parameters, $notes, $order, $swimming);
             case 'run':
             case 'bike':
+                return new IntervalStep($parameters, $notes, $order, $swimming, $criticalPower);
             case 'go':
             case 'other':
             case 'swim':
