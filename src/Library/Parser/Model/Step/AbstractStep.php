@@ -55,7 +55,7 @@ abstract class AbstractStep implements \JsonSerializable
         $target = $this->parseTextTarget($stepText);
 
         $this->duration = DurationFactory::build($duration);
-        $this->target = TargetFactory::build($target, $this->criticalPower);
+        $this->target = TargetFactory::build($target, $criticalPower);
 
         // Check for specific strokes and equipment
         if ($swimming) {
